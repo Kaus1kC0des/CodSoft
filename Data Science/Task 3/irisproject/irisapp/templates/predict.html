@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flower Prediction</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            transition: background-color 0.5s, color 0.5s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .dark-mode {
+            background-color: #111;
+            color: white;
+        }
+        .light-mode {
+            background-color: #fff;
+            color: black;
+        }
+        .toggle-switch {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 60px;
+            height: 34px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .slider.round {
+            border-radius: 34px;
+        }
+        .slider.round:before {
+            border-radius: 50%;
+        }
+        .predict-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .predict-form input {
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+        }
+        .predict-form button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: #007AFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .predict-form button:hover {
+            background-color: #0051FF;
+        }
+        .home-link {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #007AFF;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <a class="home-link" href="/home">Home</a>
+    <label class="toggle-switch">
+        <input type="checkbox" id="theme-switch">
+        <span class="slider round"></span>
+    </label>
+<form class="predict-form" id="predict-form">
+    <input type="number" step="any" name="sepal_length" placeholder="Sepal Length (cm)" required>
+    <input type="number" step="any" name="sepal_width" placeholder="Sepal Width (cm)" required>
+    <input type="number" step="any" name="petal_length" placeholder="Petal Length (cm)" required>
+    <input type="number" step="any" name="petal_width" placeholder="Petal Width (cm)" required>
+    <button type="submit">Predict</button>
+</form>
+<script>
+    document.getElementById('predict-form').addEventListener('submit', function(event){
+        event.preventDefault();
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/predict', true);
+        var data = new FormData();
+        data.append('sepal_length', document.getElementsByName('sepal_length')[0].value);
+        data.append('sepal_width', document.getElementsByName('sepal_width')[0].value);
+        data.append('petal_length', document.getElementsByName('petal_length')[0].value);
+        data.append('petal_width', document.getElementsByName('petal_width')[0].value);
+        xhr.send(data);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                window.location.href = '/output';
+            }
+        };
+    });
+</script>
+</body>
+</html>

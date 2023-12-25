@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iris Flower Classification Result</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apple-website-styles@2.0.1/dist/apple-website-styles.min.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .hero {
+      background-color: #f7f7f7;
+      padding: 4rem 0;
+    }
+    .container {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+    .title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .result {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="apple-bar apple-bar--fixed">
+    <a href="{{ url_for('home') }}" class="apple-bar__item">
+      <svg class="apple-icon" data-apple-icon="home"></svg>
+    </a>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="title">404 Error :(</h1>
+      <p class="result">Sorry an error occurred, please refer below: <br> <br> {{ error }}.</p>
+    </div>
+  </section>
+</body>
+</html>
