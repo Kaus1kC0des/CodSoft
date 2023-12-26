@@ -26,12 +26,15 @@ def predict(request):
             prediction = model.predict(data)[0]
             if prediction == 0:
                 prediction = 'Iris Setosa'
-                return render(request, 'predict.html', {'prediction': "Iris Setosa"})
             elif prediction == 1:
                 prediction = 'Iris Versicolor'
-                return render(request, 'predict.html', {'prediction': "Iris Versicolor"})
             else:
                 prediction = 'Iris Virginica'
-                return render(request, 'predict.html', {'prediction': "Iris Virginica"})
+            request.session['prediction'] = prediction  # Store prediction in session
+            return redirect('output')  # Redirect to output view
         except Exception as e:
             return render(request,'error.html',{'error':e})
+
+def output(request):
+    prediction = request.session.get('prediction', 'No prediction')  # Retrieve prediction from session
+    return render(request, 'output.html', {'prediction': prediction})
