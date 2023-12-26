@@ -5,34 +5,33 @@ from django.http import HttpResponse
 from joblib import load
 import numpy as np  # Adjust the model import if needed
 
-# Load the model within the views.py file
-iris_model = load("models/iris_model.joblib")
+model = load(os.path.join(os.path.dirname(__file__), 'models/iris_model.joblib'))
 
+#creating the home page
 def home(request):
     return render(request, 'home.html')
 
 def predict(request):
-    if request.method == 'POST':
+    if request.method == "GET":
         try:
-            data = request.POST.to_dict()
-            data = [float(v) for v in data.values()]  # Convert form values to floats
-            data = np.array(data, dtype=np.float64).reshape(1, -1)  # reshape for prediction
-            prediction = iris_model.predict(data)[0]  # Extract single prediction
-
-            if prediction == 0:
-                predicted_class = "Iris Setosa"
-            elif prediction == 1:
-                predicted_class = "Iris Versicolour"
-            else:
-                predicted_class = "Iris Virginica"
-
-            return render(request, 'output.html', {'prediction': predicted_class})
+            return render(request,'predict.html')
         except Exception as e:
-            # Handle and log exceptions
-            return render(request, 'error.html', {'error': e})
-    else:
-        return render(request, 'predict.html')
-
-# def output(request):
-#     return render(request, 'output.html', {'prediction': ""})  # Optional view
-print(os.getcwd())
+            return render(request,'error.html',{'error':e})
+    elif request.method == "POST":
+        try:
+            data = request.POST.dict()
+            data.pop('csrfmiddlewaretoken')
+            data = list(map(float, data.values()))
+            data = np.array([data]).reshape(1, -1)
+            prediction = model.predict(data)[0]
+            if prediction == 0:
+                prediction = 'Iris Setosa'
+                return render(request, 'predict.html', {'prediction': "Iris Setosa"})
+            elif prediction == 1:
+                prediction = 'Iris Versicolor'
+                return render(request, 'predict.html', {'prediction': "Iris Versicolor"})
+            else:
+                prediction = 'Iris Virginica'
+                return render(request, 'predict.html', {'prediction': "Iris Virginica"})
+        except Exception as e:
+            return render(request,'error.html',{'error':e})
