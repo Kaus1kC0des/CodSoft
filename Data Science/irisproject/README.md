@@ -11,8 +11,8 @@ This is the main Django application directory. It contains the following:
 
 - [models/](./irisapp/models/): This directory contains the data and model files for the project.
   - [iris.csv](./irisapp/models/iris.csv): The dataset used for training the model.
-  - [iris_modelling.ipynb](./irisapp/models/iris_modelling.ipynb): A Jupyter notebook that contains the code for training and tuning the model.
-  - [iris_model.joblib](./irisapp/models/iris_model.joblib): The trained Logistic Regression model.
+  - [iris_modelling.ipynb](irisapp/models/iris_modelling.ipynb): A Jupyter notebook that contains the code for training and tuning the model.
+  - [iris_model.joblib](irisapp/models/iris_model.joblib): The trained Logistic Regression model.
 
 - [__init__.py](./irisapp/__init__.py): An empty file that tells Python that this directory should be considered a Python package.
 
