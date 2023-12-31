@@ -14,12 +14,6 @@ This is the main Django application directory. It contains the following:
   - [iris_modelling.ipynb](./irisapp/models/iris_modelling.ipynb): A Jupyter notebook that contains the code for training and tuning the model.
   - [iris_model.joblib](./irisapp/models/iris_model.joblib): The trained Logistic Regression model.
 
-- [templates/](./irisapp/templates/): This directory contains the HTML templates for the application.
-  - [error.html](./irisapp/templates/error.html): The template for displaying error messages.
-  - [home.html](./irisapp/templates/home.html): The template for the home page.
-  - [output.html](./irisapp/templates/output.html): The template for displaying the prediction result.
-  - [predict.html](./irisapp/templates/predict.html): The template for the page where users input the flower parameters.
-
 - [__init__.py](./irisapp/__init__.py): An empty file that tells Python that this directory should be considered a Python package.
 
 - [urls.py](./irisapp/urls.py): The URL declarations for this Django application.
@@ -40,7 +34,11 @@ This is the main project directory. It contains the following:
 
 - [wsgi.py](./irisproject/wsgi.py): An entry-point for WSGI-compatible web servers to serve your project.
 
-### [templates/](./templates/)
+### [templates/](./irisapp/templates/): This directory contains the HTML templates for the application.
+  - [error.html](./irisapp/templates/error.html): The template for displaying error messages.
+  - [home.html](./irisapp/templates/home.html): The template for the home page.
+  - [output.html](./irisapp/templates/output.html): The template for displaying the prediction result.
+  - [predict.html](./irisapp/templates/predict.html): The template for the page where users input the flower parameters.
 
 This directory contains the HTML templates for the application. It has the same files as `irisapp/templates/`.
 
@@ -58,4 +56,4 @@ pipenv install
 python manage.py runserver
 ```
 
-This will start the Django development server. You can access the web application by navigating to `http://localhost:8000/` in your web browser.
+This will start the Django development server. You can access the web application by navigating to `http://localhost:8000/` or 'http://127.0.0.1:8000/' in your web browser.
