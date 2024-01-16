@@ -31,10 +31,11 @@ def transform_text(text):
   del text # Free memory space
   return out
 
-pred = None
+prediction = ""
 
 model = pickle.load(open('models/final_model.pkl', 'rb'))
 vectorizer = pickle.load(open('models/vectorizer_final.pkl', 'rb'))
+
 
 
 @app.route("/")
@@ -45,17 +46,22 @@ def home():
 def predict():
   if request.method == "POST":
     try:
-      global pred
+      global prediction
       data = request.get_json()
       message = data.get('emailContent')
-      message = transform_text(message)
-      print(message)
+      query = transform_text(message)
+      vect = vectorizer.transform([query]).toarray()
+      out = model.predict(vect)
+      print(type(out[0]))
+      if out == 0:
+        prediction += "HAM"
+        print(prediction)
+        return render_template("output.html", prediction=prediction)
+      else:
+        prediction += "SPAM!!"
+        print(prediction)
+        return render_template("output.html", prediction=prediction)
 
-
-
-
-
-      return render_template("output.html",prediction=message)
     except Exception as e:
       return render_template("error.html",error_message=e)
   else:
@@ -63,7 +69,7 @@ def predict():
 
 @app.route("/output")
 def output():
-  return render_template('output.html',prediction=pred)
+  return render_template('output.html',prediction=prediction)
 
 
 if __name__ == '__main__':
