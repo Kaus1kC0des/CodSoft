@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ham Email Information</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apple-website-styles@2.0.1/dist/apple-website-styles.min.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1d1d1f;
+      color: #fff;
+    }
+    .hero {
+      padding: 4rem 0;
+    }
+    .container {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+    .title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .content {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .statistics {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .apple-bar__item svg {
+      fill: #fff;
+    }
+    .apple-bar__item {
+      color: #fff;
+    }
+    #moreInfoButton {
+      display: block;
+      width: 200px;
+      height: 50px;
+      margin: 20px auto;
+      background-color: #0a84ff;
+      color: white;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <nav class="apple-bar apple-bar--fixed">
+  <a href="{{ url_for('home') }}" class="apple-bar__item">
+    Home
+  </a>
+</nav>
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="title">This E-Mail is HAM!!</h1>
+      <p class="content">Ham emails are the opposite of spam emails. They are emails that you want to receive and read. They are usually from known contacts or companies that you have given permission to email you.</p>
+      <p class="statistics">According to recent statistics, approximately 55% of all emails sent globally are ham emails. These emails are important for daily communication and business operations.</p>
+      <a id="moreInfoButton">Show More Info</a>
+      <p id="moreInfo" style="display: none;">
+        Ham emails are a crucial part of today's digital world. They facilitate communication and information sharing. Always ensure to check your inbox regularly to not miss out on important ham emails.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('moreInfoButton').addEventListener('click', function() {
+      var moreInfo = document.getElementById('moreInfo');
+      if (moreInfo.style.display === 'none') {
+        moreInfo.style.display = 'block';
+      } else {
+        moreInfo.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
