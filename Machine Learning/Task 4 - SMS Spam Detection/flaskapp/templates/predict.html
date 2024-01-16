@@ -68,7 +68,7 @@
 
   <section class="container">
     <h1 class="title">Spam Email Predictor</h1>
-    <form onsubmit="handleFormSubmit(event)">
+    <form action="/predict" method="post">
       <div class="form-group">
         <label for="emailContent">Enter your email content:</label>
         <textarea id="emailContent" name="emailContent" required placeholder="Enter your email content here"></textarea>
@@ -79,7 +79,7 @@
     </form>
   </section>
 
-  <script>
+  <!-- <script>
   function handleFormSubmit(event) {
     event.preventDefault(); // Prevent the form from being submitted normally
 
@@ -106,6 +106,6 @@
       }
     }
   }
-</script>
+</script> -->
 </body>
 </html>
