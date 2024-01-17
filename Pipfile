@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-
 python_version = "3.12"
 pandas = "*"
 numpy = "*"
@@ -22,5 +21,3 @@ django = "*"
 
 [requires]
 python_version = "3.12"
-
-
