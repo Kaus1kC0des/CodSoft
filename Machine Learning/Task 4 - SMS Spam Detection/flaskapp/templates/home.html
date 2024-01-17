@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Classifier</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #1d1d1d;
+            color: #fff;
+            font-family: 'San Francisco', sans-serif;
+        }
+        .btn {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 text-center">Welcome to the Spam Classifier</h1>
+        <p class="lead">This tool helps you distinguish between spam and ham (legitimate) emails.</p>
+        <ul>
+            <li><p>Spam emails are unsolicited messages sent in bulk, often for marketing purposes. They can be annoying and, in some cases, might contain malicious links or attachments.</p></li>
+            <li><p>Ham emails, on the other hand, are regular, non-spam emails that you want to receive.</p></li>
+            <li><p>Falling for a spam email can lead to various consequences, such as malware infection, personal data theft, and financial loss.</p></li>
+        </ul>
+        <p>Click the button below to check if an email is spam or ham.</p>
+        <a href="/predict.html" class="btn">Check your email</a>
+    </div>
+    <script>
+        document.querySelector('.btn').addEventListener('mouseover', function() {
+            this.style.backgroundColor = '#0056b3';
+        });
+        document.querySelector('.btn').addEventListener('mouseout', function() {
+            this.style.backgroundColor = '#007bff';
+        });
+    </script>
+</body>
+</html>

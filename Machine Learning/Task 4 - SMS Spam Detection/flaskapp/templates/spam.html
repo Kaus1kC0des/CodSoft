@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spam Information</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apple-website-styles@2.0.1/dist/apple-website-styles.min.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1d1d1f;
+      color: #fff;
+    }
+    .hero {
+      padding: 4rem 0;
+    }
+    .container {
+      max-width: 1024px;
+      margin: 0 auto;
+    }
+    .title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .content {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .statistics {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .apple-bar__item svg {
+      fill: #fff;
+    }
+    .apple-bar__item {
+      color: #fff;
+    }
+    #moreInfoButton {
+      display: block;
+      width: 200px;
+      height: 50px;
+      margin: 20px auto;
+      background-color: #0a84ff;
+      color: white;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <nav class="apple-bar apple-bar--fixed">
+  <a href="{{ url_for('home') }}" class="apple-bar__item">
+    Home
+  </a>
+</nav>
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="title">This E-Mail is SPAM!!</h1>
+      <p class="content">Spam messages are unsolicited, usually commercial messages sent to a large number of people. They are often sent by a bot or a compromised computer and can contain links to malicious websites or attachments with malware.</p>
+      <p class="statistics">According to recent statistics, approximately 14.5 billion spam emails are sent every day globally, making up nearly 45% of all emails sent. These spam emails result in about $20.5 billion loss per year due to decreased productivity and technical expenses.</p>
+      <a id="moreInfoButton">Show More Info</a>
+      <p id="moreInfo" style="display: none;">
+        Spam emails are a common problem in today's digital world. They not only clutter your inbox but can also pose serious security risks. Always be cautious when opening emails from unknown senders and never click on suspicious links.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('moreInfoButton').addEventListener('click', function() {
+      var moreInfo = document.getElementById('moreInfo');
+      if (moreInfo.style.display === 'none') {
+        moreInfo.style.display = 'block';
+      } else {
+        moreInfo.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

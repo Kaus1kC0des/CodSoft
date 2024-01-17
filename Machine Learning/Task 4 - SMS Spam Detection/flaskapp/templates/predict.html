@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spam Email Predictor</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apple-website-styles@2.0.1/dist/apple-website-styles.min.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1d1d1f;
+      color: #fff;
+    }
+    .container {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .form-group textarea {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      background-color: #2b2b2b;
+      color: #fff;
+    }
+    .form-group button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #0a84ff;
+      color: white;
+      cursor: pointer;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+    .apple-bar__item svg {
+      fill: #fff;
+    }
+    .apple-bar__item {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <nav class="apple-bar apple-bar--fixed">
+    <a href="{{ url_for('home') }}" class="apple-bar__item">
+      Home
+    </a>
+  </nav>
+
+  <section class="container">
+    <h1 class="title">Spam Email Predictor</h1>
+    <form action="/predict" method="post">
+      <div class="form-group">
+        <label for="emailContent">Enter your email content:</label>
+        <textarea id="emailContent" name="emailContent" required placeholder="Enter your email content here"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit">Predict</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- <script>
+  function handleFormSubmit(event) {
+    event.preventDefault(); // Prevent the form from being submitted normally
+
+    // Get the email content from the form
+    var emailContent = document.getElementById('emailContent').value;
+
+    // Send the email content to your server
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", '/predict', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+      emailContent: emailContent
+    }));
+
+    // Redirect to the appropriate page based on the response
+    xhr.onload = function() {
+      if (xhr.status == 200) {
+        var response = JSON.parse(xhr.responseText);
+        if (response.prediction == "spam") {
+          window.location.href = '/spam';
+        } else {
+          window.location.href = '/ham';
+        }
+      }
+    }
+  }
+</script> -->
+</body>
+</html>
