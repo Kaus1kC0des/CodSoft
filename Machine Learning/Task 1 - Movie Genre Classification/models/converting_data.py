@@ -1,24 +1,23 @@
 import csv
 
-# Input and output file paths
-input_file_path = 'data/train_data.txt'
-output_file_path = 'data/train.csv'
+input_files = {"train": "data/train_data.txt", "test": "data/test_data.txt",
+               "test_data_solution": "data/test_data_solution.txt"}
 
-# Open the input and output files
-with open(input_file_path, 'r', encoding='utf-8') as infile, open(output_file_path, 'w', encoding='utf-8',
-                                                                  newline='') as outfile:
-    # Create a CSV writer
-    csv_writer = csv.writer(outfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+for i in input_files:
+    input_file_path = input_files[i]
+    output_file_path = f"data/{i}.csv"
+    with (open(input_file_path, 'r', encoding='utf-8') as infile,
+          open(output_file_path, 'w', newline='',encoding="utf-8") as outfile):
 
-    # Write the header
-    csv_writer.writerow(['ID', 'TITLE', 'GENRE', 'DESCRIPTION'])
+        writer = csv.writer(outfile, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
-    # Process each line in the input file
-    for line in infile:
-        # Split the line into fields using ':::' as the delimiter
-        fields = line.strip().split(' ::: ')
+        if i == "test":
+            writer.writerow(["ID", "TITLE", "DESCRIPTION"])
+        else:
+            writer.writerow(["ID", "TITLE", "GENRE", "DESCRIPTION"])
 
-        # Write the fields to the CSV file
-        csv_writer.writerow(fields)
+        for line in infile:
+            data = line.strip().split(" ::: ")
+            writer.writerow(data)
 
-print(f"Conversion completed. CSV file saved at {output_file_path}")
+    print(f"Data of {input_file_path} successfully written to {output_file_path} ")
