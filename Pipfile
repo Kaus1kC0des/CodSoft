@@ -6,20 +6,16 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-<<<<<<< HEAD
-python_version = "3.12"
-=======
 django = "*"
->>>>>>> 7e40736b60bcbbd1cc4e3965b04060b9a863cd5a
 pandas = "*"
 numpy = "*"
 matplotlib = "*"
 seaborn = "*"
 jupyter = "*"
+nltk = "*"
+scikit-learn = "*"
+flask = "*"
+
 
 [requires]
-<<<<<<< HEAD
-python_version = "3.12"
-=======
-python_version = "3.11"
->>>>>>> 7e40736b60bcbbd1cc4e3965b04060b9a863cd5a
+
