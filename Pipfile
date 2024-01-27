@@ -4,18 +4,30 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-
-[packages]
-django = "*"
 pandas = "*"
 numpy = "*"
 matplotlib = "*"
 seaborn = "*"
+plotly = "*"
+cufflinks = "*"
 jupyter = "*"
-nltk = "*"
 scikit-learn = "*"
+scikit-learn-intelex = "*"
+wordcloud = "*"
+chardet = "*"
+xgboost = "*"
+langdetect = "*"
+django = "*"
+nltk = "*"
 flask = "*"
+streamlit = "*"
+deep_translator = "*"
+
+[packages]
+django = "*"
+nltk = "*"
+flask = "*"
+streamlit = "*"
 
 
 [requires]
-
